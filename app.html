@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-UK">
+<head>
+<script type="text/javascript" src="app.js"></script>
+<link rel="stylesheet" type="text/css" href="app.css"/>
+<meta charset="utf-8">
+<meta name="author" content="Julia Schaumeier and Sam Macbeth">
+<meta name="description" content="Timexon is an application for time keeping at Kinexon.">
+<title>timexon</title>
+</head>
+<body>
+
+<h1>TIME<span style="color: #ffef96">X</span>ON for time keeping @ KINEXON</h1>
+<table>
+  <tr>
+  <th id="newticket"><a href='#' onclick='overlay()'>ADD TICKET</a></th>
+    <th>Add to Jira</th>
+    <th>Add<br>start/stop</th>
+    <th>Add hours</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tbody id="ticket-table">
+  <tr>
+    <td>Peter</td>
+    <td>Griffin</td>
+    <td>$100</td>
+    <td>fourth</td>
+    <td>abc</td>
+    <td>abcdefghi abcdefghi</td>
+    <td>abc</td>
+    <td>abc</td>
+    <td>xyz</td>
+  </tr>
+  <tr>
+    <!-- <td>Lois</td> -->
+    <td>
+ <div class="wrapper">
+ <div class="actions">
+   <div title="delete" class="iconset_16px"></div>
+ </div>
+ </div>  
+ Lois<br><br>BASE-1102 
+</td>
+    <td>* 03:46 *</td>
+    <td><em>Tue 18/04</em><br>from: 09:50<br>till: --:--</td>
+    <td><ul>
+      <li>Tue 18/04</li>
+      <li>+ 2h 30min</li>
+    </ul></td>
+    <td><em>Tue 18/04</em><br>from: 8:15<br>till: 9:30</td>
+    <td><ul>
+      <li>Tue 18/04</li>
+      <li>from: 09:01</li>
+      <li>till: 09:02</li>
+    </ul></td>
+    <td>abc</td>
+    <td>abc</td>
+  </tr>
+  <tr>
+    <td>Joe</td>
+    <td>Swanson</td>
+    <td>$300</td>
+    <td>first</td>
+    <td>abc</td>
+    <td>abc</td>
+  </tr>
+  <tr>
+    <td>Cleveland</td>
+    <td>Brown</td>
+    <td>$250</td>
+    <td>second</td>
+    <td>abc</td>
+    <td>abc</td>
+    <td>abc</td>
+    <td>abc</td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+
+
+<!--      <div>
+          <p>Content you want the user to see goes here.
+          Click here to [<a href='#' onclick='overlay()'>close</a>] </p>
+     </div> -->
+
+<div id="overlay">
+  <div>
+    <form action="#" id="newTicketName">
+    <input type="text" class="form-control" id="addTicketName" placeholder="TicketName">
+     <button id="mybutton" class="btn btn-primary" name="ticketName"><a href='#' onclick='overlay()'>Submit</a></button>
+    </form>
+  </div>
+</div>
+
+<!-- <div id="overlay">
+<div class="tooltip">
+    <div class="tooltip-origin-border">
+        <div class="tooltip-origin-inner">
+    <div class="tooltip-content">
+          <p>Content you want the user to see goes here.
+          Click here to [<a href='#' onclick='overlay()'>close</a>] </p>
+    </div>
+    </div>
+</div> -->
+
