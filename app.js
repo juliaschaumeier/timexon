@@ -5,11 +5,11 @@ function createRow(name) {
     <td class="ticket">
       <div class="wrapper">
         <div class="actions">
-          <div id="row-delete" title="delete" class="iconset_16px"></div>
+          <div id="row-delete" title="delete" class="iconset_16px"> x</div>
         </div>
       </div>Ticket<br><br>${name}
     </td>
-    <td id="timer">* 0:00 *</td>`;
+    <td id="timer">* 00:00 *</td>`;
   return row;
 }
 
@@ -42,14 +42,19 @@ function addRow(name) {
 
 function calculateTime(row) {
   var elapsedTime = 0;
-  row.querySelectorAll('td').forEach(function(cell) {
+  var cells = row.querySelectorAll('td');
+  for (var i = 0; i < cells.length; i += 1) {
+    let cell = cells[i];
     let time = cell.getAttribute('time');
     if (time) {
       elapsedTime += parseInt(time);
     }
-  });
+  };
   var totalMinutes = elapsedTime / 60000;
-  var elapsedHours = Math.floor(totalMinutes / 60);
+  var elapsedHours = Math.floor(totalMinutes / 60).toFixed();
+  if (elapsedHours.length === 1) {
+    elapsedHours = '0' + elapsedHours
+  }
   var elapsedMinutes = (totalMinutes  % 60).toFixed();
   if (elapsedMinutes.length === 1) {
     elapsedMinutes = '0' + elapsedMinutes
@@ -57,8 +62,8 @@ function calculateTime(row) {
   row.querySelector('#timer').innerText = `* ${elapsedHours}:${elapsedMinutes} *`
 }
 
-function overlay() {
-  el = document.getElementById("overlay");
+function overlay(name) {
+  el = document.getElementById(name || "overlay");
   el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 }
 
@@ -93,13 +98,30 @@ window.onload = function() {
         targetRow.insertBefore(cell, targetRow.children[2]);
       }
 
-      cell.addEventListener('click', function() {
+      var setEndTime = function() {
         var endTime = new Date();
         var diff = endTime - startTime;
         cell.innerHTML = fillStartStop(startTime, endTime);
         cell.setAttribute('time', diff);
         calculateTime(targetRow);
-      });
+        cell.removeEventListener('click', setEndTime);
+        cell.addEventListener('click', function() {
+          overlay('startstopoverlay');
+          document.getElementById('alterStart').value = startTime.toLocaleTimeString().substring(0, 5);
+          document.getElementById('alterStop').value = endTime.toLocaleTimeString().substring(0, 5);
+          document.getElementById('alterStartStop').addEventListener('submit', function() {
+            var ss = document.getElementById('changeStartStop');
+            var startTime = ss.startTime;
+            var endTime = ss.endTime;
+            cell.innerHTML = fillStartStop(startTime, endTime);
+            cell.setAttribute('time', diff);
+            calculateTime(targetRow);
+            overlay('startstopoverlay');
+            return false;
+          });
+        });
+      }
+      cell.addEventListener('click', setEndTime);
     }
   });
 };

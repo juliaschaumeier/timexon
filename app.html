@@ -13,10 +13,19 @@
 <h1>TIME<span style="color: #ffef96">X</span>ON for time keeping @ KINEXON</h1>
 <table>
   <tr>
-  <th id="newticket"><a href='#' onclick='overlay()'>ADD TICKET</a></th>
+  <th id="newticket"><a href='#' onclick='overlay()'>Add Ticket</a></th>
     <th>Add to Jira</th>
     <th id="startstop">Add<br>start/stop</th>
     <th>Add hours</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -34,11 +43,23 @@
           Click here to [<a href='#' onclick='overlay()'>close</a>] </p>
      </div> -->
 
-<div id="overlay">
-  <div>
+<div class="overlay" id="overlay">
+  <div><br><br>
     <form action="#" id="newTicketName">
-    <input type="text" class="form-control" id="addTicketName" placeholder="TicketName">
-     <button id="mybutton" class="btn btn-primary" name="ticketName"><a href='#' onclick='overlay()'>Submit</a></button>
+      <input type="text" class="form-control" id="addTicketName" placeholder="TicketName">
+      <button id="mybutton" class="btn btn-primary" name="ticketName"><a href='#' onclick='overlay()'>Submit</a></button>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" id="startstopoverlay">
+  <div><br><br>
+      <form action="#" id="alterStartStop">
+      <label for="startTime">xx</label>
+      <input type="date" class="form-control" id="alterStart">
+      <label for="endTime">xx</label>
+      <input type="date" class="form-control" id="alterStop">
+      <button id="mybutton" class="btn btn-primary" name="startstop"><a href='#' onclick='overlay()'>Submit</a></button>
     </form>
   </div>
 </div>
